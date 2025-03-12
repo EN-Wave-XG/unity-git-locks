@@ -67,6 +67,16 @@ public class GitLocksPreferences : SettingsProvider
             GUILayout.Space(5);
 
             EditorGUI.BeginChangeCheck();
+            string gitlfsbinary = EditorGUILayout.TextField(new GUIContent("git-lfs full path"), EditorPrefs.GetString("gitLfsBinaryPath"));
+            if (EditorGUI.EndChangeCheck())
+            {
+                EditorPrefs.SetString("gitLfsBinaryPath", gitlfsbinary);
+            }
+
+            GUILayout.Space(5);
+
+
+            EditorGUI.BeginChangeCheck();
             int maxFilesNumPerRequest = EditorGUILayout.IntField(new GUIContent("Max number of files grouped per request"), EditorPrefs.GetInt("gitLocksMaxFilesNumPerRequest"));
             if (EditorGUI.EndChangeCheck())
             {

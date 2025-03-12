@@ -122,7 +122,7 @@ public class GitLocks : ScriptableObject
 
         // Get the locks asynchronously
         currentlyRefreshing = true;
-        ExecuteNonBlockingProcessTerminal("git", "lfs locks --json");
+        ExecuteNonBlockingProcessTerminal(EditorPrefs.GetString("gitLfsBinaryPath"), " locks --json");
     }
 
     public static void RefreshCallback(string result)
@@ -130,7 +130,7 @@ public class GitLocks : ScriptableObject
         // If empty result, start a simple git lfs locks (no json) to catch potential errors
         if (result == "[]")
         {
-            ExecuteNonBlockingProcessTerminal("git", "lfs locks");
+            ExecuteNonBlockingProcessTerminal(EditorPrefs.GetString("gitLfsBinaryPath"), " locks");
         }
 
         // Check that we're receiving what seems to be a JSON result
@@ -381,6 +381,7 @@ public class GitLocks : ScriptableObject
                 if (e.Data != null)
                 {
                     refreshCallbackError = e.Data;
+                    DebugLog("error " + e.Data.ToString());
                 }
             });
             p.Start();
@@ -389,7 +390,7 @@ public class GitLocks : ScriptableObject
         }
         catch (Exception e)
         {
-            UnityEngine.Debug.Log("Error :" + e);
+            UnityEngine.Debug.Log("--------------- Error :" + e);
         }
     }
 
@@ -543,7 +544,7 @@ public class GitLocks : ScriptableObject
         // Send each request
         foreach (string pathsString in pathsStrings)
         {
-            ExecuteProcessTerminalWithConsole("git", "lfs lock " + pathsString);
+            ExecuteProcessTerminalWithConsole(EditorPrefs.GetString("gitLfsBinaryPath"), " lock " + pathsString);
         }
     }
 
@@ -579,7 +580,7 @@ public class GitLocks : ScriptableObject
         // Send each request
         foreach (string pathsString in pathsStrings)
         {
-            ExecuteProcessTerminalWithConsole("git", "lfs unlock " + pathsString + (force ? "--force" : string.Empty));
+            ExecuteProcessTerminalWithConsole(EditorPrefs.GetString("gitLfsBinaryPath"), " unlock " + pathsString + (force ? "--force" : string.Empty));
         }
     }
 
