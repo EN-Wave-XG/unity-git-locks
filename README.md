@@ -40,6 +40,8 @@ You could in theory use the tool with the read-only mode enabled but it has not 
 The only thing you absolutely need to setup before use is your provider's (e.g. Github) username, so the tool knows that it's you.
 You have to input it in the Preferences window (`Edit/Preferences/Git Locks/Git host username`), which is also accessible through the "Git Locks" window.
 
+Please also provide the full path to the git-lfs executable (Can be found in a terminal with the command `which git-lfs`)
+
 <img src=".docs\img\username.PNG" alt="Set Username" width="50%" />
 
 ### Troubleshooting
