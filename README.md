@@ -19,9 +19,8 @@ This tool is intended to be used by developers, designers and artists alike, pro
 
 The easiest way is probably to add this repository as a package, either:
 
-• [Automatically](https://docs.unity3d.com/Manual/upm-ui-giturl.html) (with url https://github.com/TomDuchene/unity-git-locks.git)
+• [Automatically](https://docs.unity3d.com/Manual/upm-ui-giturl.html) (with url https://github.com/EN-Wave-XG/unity-git-locks)
 
-• Manually, by cloning this repository in your repository's Packages folder
 
 ### Repository configuration recommendations
 
